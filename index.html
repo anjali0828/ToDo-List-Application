@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO DO LIST</title>
+    <style>
+        .action-container{
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .list-container{
+            background-color: orangered;
+            width: 350px;
+            display: block;
+            margin: 20px auto;
+            padding: 10px;
+            border-radius: 5px;
+            height: 300px;
+            overflow-y: scroll;
+
+            }
+            .todo-item{
+                background-color: black;
+                padding: 5px 20px;
+                border-radius: 30px;
+                color: white;
+                margin: 5px;
+            }
+            .input-todo{
+                border-radius: 30px;
+                margin:  auto 10px;
+                padding: 10px;
+                width: 200px;
+                font-size: 15px;
+                border: 3px solid gray;
+                
+            }
+            .add-btn{
+                margin: 5px;
+                
+                padding: 10px;
+                border-radius: 30px;
+                width: 80px;
+            }
+    </style>
+</head>
+<body>
+    <div  class="list-container" id="list-container">
+        <div class="todo-item"> Task1</div>
+        <div class="todo-item"> Task1</div>     
+        <div class="todo-item"> Task1</div>
+        <div class="todo-item"> Task1</div>
+        <div class="todo-item"> Task1</div>
+        <div class="todo-item"> Task1</div>
+        <div class="todo-item"> Task1</div>
+        <div class="todo-item"> Task1</div>
+        <div class="todo-item"> Task1</div>
+        <div class="todo-item"> Task1</div>
+        <div class="todo-item"> Task1</div>
+        <div class="todo-item"> Task1</div>
+        <div class="todo-item"> Task1</div>
+    </div>
+    <div class="action-container">
+        <input type="text" id="input-todo" class="input-todo" placeholder="Enter The Task...."/>
+         <button onclick="add()" class="add-btn"> Add </button>
+
+    
+    </div>
+
+    <script>
+        const todolist = []
+        
+        function add(){
+            const inputElement = document.getElementById('input-todo')
+
+            todolist.push(inputElement.value)
+            inputElement.value =""
+
+            renderToDoList()
+
+        }
+
+        function renderToDoList(){
+            const listcontainer = document.getElementById('list-container')
+            listcontainer.innerHTML= "" 
+
+            for(const todoItem of todolist)
+            {
+                listcontainer.innerHTML  += `<div class="todo-item">
+                    <input type="checkbox"/>
+                    ${todoItem}
+                    </div>`
+            }    
+          }
+    </script>
+</body>
+</html>
